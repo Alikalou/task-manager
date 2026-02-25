@@ -1,0 +1,44 @@
+PATCH http://127.0.0.1:8000/api/v1/projects/1/tasks/3/status
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer gnB4KuNhWdakUo21iiv01o7c8wJVXrxUHmVagp816eeb57b5
+
+{
+  "status": "todo"
+}
+
+###
+GET http://127.0.0.1:8000/api/v1/projects/1/tasks
+Accept: application/json
+Authorization: Bearer gnB4KuNhWdakUo21iiv01o7c8wJVXrxUHmVagp816eeb57b5
+
+
+### Create task
+POST http://127.0.0.1:8000/api/v1/projects/1/tasks
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer gnB4KuNhWdakUo21iiv01o7c8wJVXrxUHmVagp816eeb57b5
+
+{
+  "title": "Buy groceries",
+  "status": "todo"
+}
+
+
+### Delete task 
+Delete http://127.0.0.1:8000/api/v1/projects/1/tasks/3
+Accept: application/json
+Authorization: Bearer gnB4KuNhWdakUo21iiv01o7c8wJVXrxUHmVagp816eeb57b5
+
+### Patch task
+PATCH http://127.0.0.1:8000/api/v1/projects/1/tasks/7
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer gnB4KuNhWdakUo21iiv01o7c8wJVXrxUHmVagp816eeb57b5
+
+{
+  "title": "Lalo",
+  "status": "todo",
+  "priority": "low"
+}
+

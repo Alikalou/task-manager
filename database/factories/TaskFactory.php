@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\TaskStatus;
 use App\Models\Project;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -13,7 +14,7 @@ class TaskFactory extends Factory
             'title' => $this->faker->sentence(4),
             'project_id' => Project::factory(),
             // add required fields in your schema:
-            // 'status' => 'todo',
+            'status' => TaskStatus::TO_DO->value,
             // 'priority' => 1,
             // 'due_date' => null,
         ];

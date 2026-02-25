@@ -19,7 +19,9 @@ class TaskObserver
     // From where are the model $task being passed to the methods of the observer.
     public function created(Task $task): void
     {
-        event(new TaskCreated($task), auth()->id());
+        $task->loadMissing('project');
+        event(new TaskCreated($task, $task->project?->user_id));
+
         // This simple statement can be articulated as follow
         // the observer runs an event, where an event wait for the object appropriate for it, in our case the object is an instance
         // of TaskCreated event. Also notice the importance of $task, without it, it would be meaningless since we don't know
@@ -59,8 +61,8 @@ class TaskObserver
         $projectId = (int) $task->project_id;
         $taskId = (int) $task->id;
         $title = $task->title;
-
-        event(new TaskDeleted($projectId, $taskId, $title), auth()->id());
+        $userId = $task->project?->user_id;
+        event(new TaskDeleted($projectId, $taskId, $title, $userId));
     }
 
     /**
